@@ -1,58 +1,15 @@
 /* --------------------------------------------- */
-/* 🍑 WARM PEACH SKY + WATERCOLOR CLOUDS         */
+/* 🍑 WARM PEACH SKY                             */
 /* --------------------------------------------- */
 
 body {
     margin: 0;
     padding: 0;
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(180deg, #FFE6D6, #FFD8C2, #FFF4EE);
+    background-color: #FFE6D6;
     text-align: center;
     overflow-x: hidden;
     position: relative;
-}
-
-/* Soft watercolor cloud layers */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -2;
-    background-image: url("https://i.imgur.com/8K3YQ0R.png");
-    background-size: 220px;
-    background-repeat: repeat;
-    opacity: 0.18;
-    animation: cloudDriftSlow 45s linear infinite;
-}
-
-body::after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -2;
-    background-image: url("https://i.imgur.com/8K3YQ0R.png");
-    background-size: 180px;
-    background-repeat: repeat;
-    opacity: 0.26;
-    animation: cloudDriftFast 22s linear infinite;
-}
-
-@keyframes cloudDriftSlow {
-    0% { background-position: 0 0; }
-    100% { background-position: -600px 0; }
-}
-
-@keyframes cloudDriftFast {
-    0% { background-position: 0 0; }
-    100% { background-position: -1200px 0; }
 }
 
 /* --------------------------------------------- */
