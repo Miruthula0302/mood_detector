@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mood Activity Helper</title>
+
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="/static/style.css?v=4">
+    <script defer src="/static/libs/face-api.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(180deg, #87ceff, #bde7ff, #ffffff);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+            background-image: url("https://i.imgur.com/8K3YQ0R.png");
+            background-size: 200px;
+            background-repeat: repeat;
+            opacity: 0.22;
+            animation: cloudDriftSlow 40s linear infinite;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+            background-image: url("https://i.imgur.com/8K3YQ0R.png");
+            background-size: 180px;
+            background-repeat: repeat;
+            opacity: 0.28;
+            animation: cloudDriftFast 20s linear infinite;
+        }
+
+        @keyframes cloudDriftSlow {
+            0% { background-position: 0 0; }
+            100% { background-position: -600px 0; }
+        }
+
+        @keyframes cloudDriftFast {
+            0% { background-position: 0 0; }
+            100% { background-position: -1200px 0; }
+        }
+
+        .mood-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            transition: background-color 0.6s ease;
+        }
+
+        .game-wrapper {
+            width: 100%;
+            max-width: 900px;
+            margin: 20px auto;
+            border-radius: 16px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            padding: 10px;
+        }
+
+        #gameContainer {
+            width: 100%;
+            height: 450px;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="mood-overlay" id="moodOverlay"></div>
+
+    <h1>Mood Detection for Neurodiverse Kids</h1>
+
+    <div class="top-row">
+
+        <div class="camera-section">
+            <video id="video" autoplay playsinline muted></video>
+            <h2 id="mood">Mood: -</h2>
+
+            <button id="detectAgainBtn" disabled class="detect-btn">
+                Detect Mood Again
+            </button>
+        </div>
+
+        <div class="emotion-section">
+            <h2>Suggested Activities</h2>
+
+            <div class="activities">
+                <div id="happy" class="activity">Happy → Move To Dance</div>
+                <div id="sad" class="activity">Sad → Pet The Dog</div>
+                <div id="angry" class="activity">Angry → Pop The Bubbles</div>
+                <div id="neutral" class="activity">Neutral → Let’s Draw Something</div>
+            </div>
+
+            <div id="encouragementMessage" class="encouragement"></div>
+        </div>
+
+    </div>
+
+    <div class="game-wrapper">
+        <div id="gameContainer"></div>
+    </div>
+
+    <!-- Removed score popup -->
+
+    <script src="/static/games/happyGame.js"></script>
+    <script src="/static/games/angryGame.js"></script>
+    <script src="/static/games/neutralGame.js"></script>
+    <script src="/static/games/sadGame.js"></script>
+
+    <script src="/static/script.js?v=4"></script>
+
+</body>
+</html>
